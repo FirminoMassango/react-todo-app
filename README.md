@@ -59,7 +59,7 @@
 - [Zustand](https://github.com/pmndrs/zustand) as React State Manager
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [LocalStorage]
+- LocalStorage
 
 <!-- - [Tailwind](https://tailwindcss.com/) -->
 
