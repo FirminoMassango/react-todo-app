@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/FirminoMassango/react-todo">
+    <a href="https://github.com/FirminoMassango/react-todo-app">
       Solution
     </a>
     <span> | </span>
