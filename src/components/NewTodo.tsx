@@ -51,7 +51,7 @@ function NewTodo() {
         ref={textInput}
       />
       <button
-        className="w-20 h-10 bg-blue-400 hover:bg-blue-500 text-white rounded-md"
+        className="w-20 h-10 bg-blue-400 hover:bg-blue-500 text-white rounded-md ml-2"
         onClick={handleButtonClickEvent}
       >
         add
