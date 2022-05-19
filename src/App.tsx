@@ -28,9 +28,9 @@ function App() {
   }
 
   return (
-    <div className="text-gray-700 flex flex-col items-center mt-10">
+    <div className="text-gray-700 flex flex-col items-center">
       <div className="w-6/12 text-center">
-        <h1 className="text-3xl font-bold">#todo</h1>
+        <h1 className="text-3xl font-bold mt-10">#todo</h1>
         <div className="flex justify-center border-b mt-10">
           <div className="w-1/3 text-center">
             <button
@@ -74,6 +74,18 @@ function App() {
           {isActiveTabActive && <ActiveTasks />}
           {isCompletedTabActive && <CompletedTasks />}
         </div>
+      </div>
+      <div className="mt-20">
+        <span className="text-gray-500 text-xs text-center retaltive bottom-20">
+          created by{" "}
+          <a
+            className="text-blue-500 font-semibold"
+            href="https://github.com/FirminoMassango/react-todo-app"
+          >
+            Firmino Massango
+          </a>{" "}
+          - devChallenges.io
+        </span>
       </div>
     </div>
   );
