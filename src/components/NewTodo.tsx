@@ -1,14 +1,43 @@
-import { useRef, useState } from "react";
-import React from "react";
+import { createRef, useEffect, useState } from "react";
+import useTodoStore from "../stores";
+import { Todo } from "./Type";
 
 function NewTodo() {
-  const [details, setDetails] = useState("");
-  console.log(details);
+  const [tasks, setTask] = useState<Todo[]>(
+    JSON.parse(localStorage.getItem("tasks") || "[]")
+  );
+  const [inputValue, setInputValue] = useState<string>();
+  const textInput = createRef<HTMLInputElement>();
+  const addTodo = useTodoStore((state) => state.addTodo);
 
-  const detailsInput = useRef(null);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
-  function handleButtonClick() {
-    setDetails(detailsInput.current.value);
+  function handleButtonClickEvent() {
+    if (textInput) {
+      setTask([
+        ...tasks,
+        {
+          id: JSON.parse(localStorage.getItem("tasks") || "[]").length + 1,
+          task: textInput.current!.value.toString(),
+          isCompleted: false,
+        },
+      ]);
+
+      addTodo([
+        ...tasks,
+        {
+          id: JSON.parse(localStorage.getItem("tasks") || "[]").length + 1,
+          task: textInput.current!.value.toString(),
+          isCompleted: false,
+        },
+      ]);
+    }
+
+    console.log(tasks);
+
+    setInputValue("");
   }
 
   return (
@@ -17,10 +46,14 @@ function NewTodo() {
         type="text"
         placeholder="add details"
         className="w-4/5 h-10 px-4 focus:outline-none focus:border-blue-400 border rounded-md "
-        ref={detailsInput}
-        onClick={(e) => setDetails(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
+        ref={textInput}
       />
-      <button className="w-20 h-10 bg-blue-400 hover:bg-blue-500 text-white rounded-md">
+      <button
+        className="w-20 h-10 bg-blue-400 hover:bg-blue-500 text-white rounded-md"
+        onClick={handleButtonClickEvent}
+      >
         add
       </button>
     </div>

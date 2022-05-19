@@ -1,6 +1,7 @@
 import { useState } from "react";
-import NewTodo from "./components/NewTodo";
-import ListTodos from "./components/ListTodos";
+import AllTasks from "./components/AllTasks";
+import ActiveTasks from "./components/ActiveTasks";
+import CompletedTasks from "./components/CompletedTasks";
 
 function App() {
   const [isAllTabActive, changeAllTabStatus] = useState<boolean>(true);
@@ -34,7 +35,9 @@ function App() {
           <div className="w-1/3 text-center">
             <button
               className={
-                isAllTabActive ? "w-32 border-b-4 w-24 border-blue-400" : ""
+                isAllTabActive
+                  ? "w-3/5 border-b-4 w-24 border-blue-400"
+                  : undefined
               }
               onClick={handleAllTabClick}
             >
@@ -44,7 +47,9 @@ function App() {
           <div className="w-1/3 text-center">
             <button
               className={
-                isActiveTabActive ? "w-32 border-b-4 w-24 border-blue-400" : ""
+                isActiveTabActive
+                  ? "w-3/5 border-b-4 w-24 border-blue-400"
+                  : undefined
               }
               onClick={handleActiveTabClick}
             >
@@ -55,8 +60,8 @@ function App() {
             <button
               className={
                 isCompletedTabActive
-                  ? "w-32 border-b-4 w-24 border-blue-400"
-                  : ""
+                  ? "w-3/5 border-b-4 w-24 border-blue-400"
+                  : undefined
               }
               onClick={handleCompletedTabClick}
             >
@@ -65,11 +70,9 @@ function App() {
           </div>
         </div>
         <div className=" flex justify-between m-auto mt-5">
-          {(isAllTabActive && <NewTodo />) ||
-            (isActiveTabActive && <NewTodo />)}
-        </div>
-        <div className="flex justify-start">
-          {isAllTabActive && <ListTodos />}
+          {isAllTabActive && <AllTasks />}
+          {isActiveTabActive && <ActiveTasks />}
+          {isCompletedTabActive && <CompletedTasks />}
         </div>
       </div>
     </div>
